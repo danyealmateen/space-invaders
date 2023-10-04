@@ -11,3 +11,10 @@ export interface AlienProps {
     y: number;
   };
 }
+
+export interface ProjectileProps {
+  initialPosition: {
+    x: number;
+    y: number;
+  };
+}

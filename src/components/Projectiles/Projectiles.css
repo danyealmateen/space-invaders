@@ -1,0 +1,7 @@
+.projectiles {
+  position: relative;
+  width: 5px;
+  height: 10px;
+  background-color: yellow;
+  color: white;
+}
