@@ -3,6 +3,7 @@ export interface PlayerProps {
     x: number;
     y: number;
   };
+  setProjectiles: React.Dispatch<React.SetStateAction<any[]>>;
 }
 
 export interface AlienProps {

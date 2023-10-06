@@ -1,5 +1,6 @@
 .game-board {
-  width: 800px;
-  height: 600px;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
 }

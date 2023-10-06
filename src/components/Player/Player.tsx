@@ -9,19 +9,19 @@ const Player: React.FC<PlayerProps> = ({ initialPosition }) => {
     Array<{ x: number; y: number }>
   >([]);
   const shipWidth = 50;
-  const projectileMargin = 10;
+  const shipHeight = 50;
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowLeft") {
         setPosition((position) => {
-          const newPosition = { ...position, x: position.x - 5 };
+          const newPosition = { ...position, x: position.x - 50 };
           console.log("arrowleft nedtryckt", newPosition);
           return newPosition;
         });
       } else if (event.key === "ArrowRight") {
         setPosition((position) => {
-          const newPosition = { ...position, x: position.x + 5 };
+          const newPosition = { ...position, x: position.x + 50 };
           console.log("arrowright nedtryckt", newPosition);
           return newPosition;
         });
@@ -29,7 +29,7 @@ const Player: React.FC<PlayerProps> = ({ initialPosition }) => {
         console.log("spacebar nedtryckt");
         setProjectiles((prevProjectiles) => [
           ...prevProjectiles,
-          { x: position.x + shipWidth / 2, y: position.y - projectileMargin },
+          { x: position.x, y: position.y },
         ]);
       }
     };
@@ -40,7 +40,16 @@ const Player: React.FC<PlayerProps> = ({ initialPosition }) => {
   }, [position]);
 
   return (
-    <div>
+    <div className="content-container">
+      {projectiles.map((proj, index) => (
+        <Projectiles
+          key={index}
+          initialPosition={{
+            x: position.x,
+            y: position.y,
+          }}
+        />
+      ))}
       <div
         className="player"
         style={{
@@ -48,9 +57,6 @@ const Player: React.FC<PlayerProps> = ({ initialPosition }) => {
           bottom: `${position.y}px`,
         }}
       ></div>
-      {projectiles.map((proj, index) => (
-        <Projectiles key={index} initialPosition={proj} />
-      ))}
     </div>
   );
 };
